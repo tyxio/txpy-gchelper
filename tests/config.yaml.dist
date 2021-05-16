@@ -1,0 +1,7 @@
+pipeline_project:
+  project_id:  # TODO(user): Set to your Project ID.
+  region:  #TODO(user): Set to your region.
+
+service_acct:
+  key_path: # TODO(user): Set the path to your key (json file downloaded from gcp) .
+

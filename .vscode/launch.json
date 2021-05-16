@@ -1,0 +1,62 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    // storage_buckets
+    {
+      "name": "storage_buckets",
+      "type": "python",
+      "request": "launch",
+      "program": "tests/test_storage_utils.py",
+      "console": "integratedTerminal",
+      "args": [
+        "--resource", "buckets",
+        "--function", "listing",
+        "--bucket_name", "tx-houston-tehran-overage-blaze"
+      ]
+    },
+    // storage_blobs
+    {
+      "name": "storage_blobs",
+      "type": "python",
+      "request": "launch",
+      "program": "tests/test_storage_utils.py",
+      "console": "integratedTerminal",
+      "args": [
+        "--resource",
+        "blobs",
+        "--function",
+        "listing",
+        "--bucket_name",
+        "tx-doc-understanding-pipeline",
+
+        // listing
+        "--prefix",
+        "patent-samples/"
+
+        // upload_file
+        //, "--prefix", "samples/computer_vision_1.pdf"
+        //, "--local_path", "./utils/storage/samples/computer_vision_1.pdf"
+
+        // upload_files
+        //, "--prefix", "samples/png/"
+        //, "--local_path", "./samples"
+
+        // download_files
+        //, "--prefix", "samples/png/"
+        //, "--local_path", "./tmp"
+
+        //, "--filter", "png"
+      ]
+    }
+  ]
+}
