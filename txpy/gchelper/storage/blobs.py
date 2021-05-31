@@ -123,6 +123,30 @@ class Blobs:
         except Exception: 
             logger.exception("")
 
+    def upload_file_as_bytes(self, 
+            bucket_name : str,
+            prefix : str,
+            data : bytes, 
+            content_type : str = '',            
+            ):
+        
+        '''
+        content_type: application/pdf, image/jpeg, application/octet-stream
+        ''' 
+        try:
+            bucket = self.client.bucket(bucket_name)            
+            blob = bucket.blob(prefix)
+
+            if content_type:
+                blob.upload_from_string(data, content_type=content_type)
+            else:
+               blob.upload_from_string(data)
+
+            logger.info(f"File uploaded to {prefix}")
+        
+        except Exception: 
+            logger.exception("")
+
     def upload_files(self,
         bucket_name : str,
         prefix : str = '',
@@ -140,8 +164,8 @@ class Blobs:
 
     
     def save_jsonl_content(self,
-        json_content : (str, 'the json payload'),
-        full_gcs_path : (str, 'GCS location to upload the jsonl file')
+        json_content : str,
+        full_gcs_path : str
         ):
         """Saves jsonl content to specified GCS location.
 

@@ -12,7 +12,7 @@ INSTALL_REQUIRES = [
 
 setup(
     name='txpy-gchelper',
-    version='0.0.11',
+    version='0.0.12',
     description='A wrapper around the Google Cloud SDK for Python',
     long_description=readme,
     long_description_content_type='text/x-rst',

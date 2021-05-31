@@ -32,20 +32,21 @@
       "program": "tests/test_storage_utils.py",
       "console": "integratedTerminal",
       "args": [
-        "--resource",
-        "blobs",
-        "--function",
-        "listing",
-        "--bucket_name",
-        "tx-doc-understanding-pipeline",
+        "--resource", "blobs",
+        "--function", "upload_file_as_bytes",
+        "--bucket_name", "tx-test-bucket"
 
         // listing
-        "--prefix",
-        "patent-samples/"
+        //"--prefix", "patent-samples/"
 
         // upload_file
         //, "--prefix", "samples/computer_vision_1.pdf"
         //, "--local_path", "./utils/storage/samples/computer_vision_1.pdf"
+        
+        // upload_file_as_bytes
+        ,"--prefix", "tenant1/user1"
+        ,"--local_path", "image3.png"
+        , "--content_type", "application/octet-stream"
 
         // upload_files
         //, "--prefix", "samples/png/"

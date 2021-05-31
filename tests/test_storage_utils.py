@@ -5,6 +5,7 @@ import sys
 
 from google.cloud import storage
 
+
 sys.path.insert(0, os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')))
 
@@ -37,7 +38,7 @@ def storage_buckets(function, bucket_name):
     elif function == 'size':
         buckets.size_bucket(bucket_name)
 
-def storage_blobs(function, bucket_name, prefix, local_path, filter):
+def storage_blobs(function, bucket_name, prefix, local_path, filter, content_type):
 
     if function == 'listing':
         blobs.list_blobs(bucket_name, prefix)
@@ -47,6 +48,17 @@ def storage_blobs(function, bucket_name, prefix, local_path, filter):
             bucket_name=bucket_name, 
             prefix=prefix,
             source_file=local_path)
+    
+    elif function == 'upload_file_as_bytes':
+        filename = 'YesWeCode.png'
+        with open("tests/" + filename, "rb") as image:
+            data = image.read()
+        blobs.upload_file_as_bytes(
+            bucket_name=bucket_name, 
+            prefix=prefix,
+            data=data,
+            content_type=content_type
+            )
 
     elif function == 'upload_files':
         blobs.upload_files(
@@ -78,11 +90,14 @@ if __name__ == '__main__':
                         help='the path to the local file or folder')   
     parser.add_argument('--filter', 
                         help='the filter name') 
+    parser.add_argument('--content_type', 
+                        help='the file content type') 
     args = parser.parse_args()
 
     if args.resource == 'buckets':
         storage_buckets(args.function, args.bucket_name)
     elif args.resource == 'blobs':
-        storage_blobs(args.function, args.bucket_name, args.prefix, args.local_path, args.filter)
+        storage_blobs(args.function, args.bucket_name, args.prefix, args.local_path, 
+            args.filter, args.content_type)
 
 
