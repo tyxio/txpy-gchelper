@@ -188,3 +188,20 @@ class Blobs:
             
     #endregion
 
+    #region Delete
+
+    def delete(self,
+        bucket_name : str,
+        blob_name : str
+        ):
+   
+        try:            
+            bucket = self.client.get_bucket(bucket_name)
+            blob = bucket.get_blob(blob_name)
+            blob.delete()
+
+        except Exception: 
+            logger.exception("")
+
+        return 
+    #endregion
