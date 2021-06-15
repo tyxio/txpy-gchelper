@@ -58,6 +58,21 @@
 
         //, "--filter", "png"
       ]
+    },
+    // pubsub
+    {
+      "name": "pubsub",
+      "type": "python",
+      "request": "launch",
+      "program": "tests/test_pubsub.py",
+      "console": "integratedTerminal",
+      "args": [
+        //"--function", "get_iam_policy",
+        //"--function", "publish",
+        "--function", "subscribe",
+        "--message", "Hellp pubsub, how are you?",
+      ],
+      "justMyCode": false,
     }
   ]
 }

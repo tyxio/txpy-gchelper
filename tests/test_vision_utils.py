@@ -11,7 +11,7 @@ from txpy.gchelper.vision.ocr import OCR
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 logger = logging.getLogger(__name__)
 
-config = yaml.safe_load(open("config.yaml", "r"))
+config = yaml.safe_load(open("tests/config.yaml", "r"))
 
 if ("service_acct" in config and "key_path" in config["service_acct"]):
     ocrHelper = OCR(
